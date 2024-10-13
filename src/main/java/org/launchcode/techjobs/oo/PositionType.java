@@ -28,22 +28,22 @@ public class PositionType {
     // TODO: Add custom equals and hashCode methods. Consider two PositionType objects "equal" when
     //  their id fields match.
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        PositionType that = (PositionType) o;
-//        return id == that.id;
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PositionType that = (PositionType) o;
+        return id == that.id;
+    }
 
 
     //    @Override
-    public boolean equals(PositionType pos) {
-        if (this.id == pos.getId()) return true;
-        if (getClass() != pos.getClass()) return false;
-        PositionType that = (PositionType) pos;
-        return id == that.id && Objects.equals(value, that.value);
-    }
+//    public boolean equals(PositionType pos) {
+//        if (this.id == pos.getId()) return true;
+//        if (getClass() != pos.getClass()) return false;
+//        PositionType that = (PositionType) pos;
+//        return id == that.id && Objects.equals(value, that.value);
+//    }
 
 
     @Override
