@@ -6,12 +6,14 @@ public class Job {
 
     private int id;
     private static int nextId = 1;
+    String emptyField = "Data not available";
 
-    private String name;
-    private Employer employer;
-    private Location location;
-    private PositionType positionType;
-    private CoreCompetency coreCompetency;
+    private String name = emptyField;
+    private Employer employer = new Employer();
+    private Location location = new Location();
+    private PositionType positionType = new PositionType();
+    private CoreCompetency coreCompetency = new CoreCompetency();
+
 
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields. The second constructor should also call the first in order to initialize
@@ -19,6 +21,10 @@ public class Job {
     public Job(){
         this.id = nextId;
         nextId++;
+        this.employer.setValue(emptyField);
+        this.location.setValue(emptyField);
+        this.positionType.setValue(emptyField);
+        this.coreCompetency.setValue(emptyField);
     }
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
@@ -32,6 +38,55 @@ public class Job {
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
+
+    @Override
+    public String toString() {
+
+
+        String tmpName = this.getName();
+        String tmpEmployer = this.getEmployer().toString();
+        String tmpLocation = this.getLocation().toString();
+        String tmpPositionType = this.getPositionType().toString();
+        String tmpCoreCompetency = this.getCoreCompetency().toString();
+
+        if(this.id > 0 && this.name.isEmpty() && this.employer.toString().isEmpty() && this.positionType.toString().isEmpty()
+            && this.coreCompetency.toString().isEmpty() && this.location.toString().isEmpty()) {
+
+            return System.lineSeparator() + "OOPS! This job does not seem to exist." + System.lineSeparator();
+        }
+
+        if(tmpName.isEmpty()){
+            tmpName = emptyField;
+            this.setName("Data not available");
+        }
+
+        if(tmpEmployer.isEmpty()){
+            tmpEmployer = emptyField;
+        }
+
+        if(tmpLocation.isEmpty()){
+            tmpLocation = emptyField;
+        }
+
+        if(tmpPositionType.isEmpty()){
+            tmpPositionType = emptyField;
+        }
+
+        if(tmpCoreCompetency.isEmpty()){
+            tmpCoreCompetency = emptyField;
+        }
+
+
+        String output =  System.lineSeparator() +
+                "ID: " + this.getId() + System.lineSeparator() +
+                "Name: " + tmpName +System.lineSeparator() +
+                "Employer: " + tmpEmployer + System.lineSeparator() +
+                "Location: " + tmpLocation + System.lineSeparator() +
+                "Position Type: " + tmpPositionType + System.lineSeparator() +
+                "Core Competency: " + tmpCoreCompetency + System.lineSeparator();
+
+        return output;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -59,7 +114,7 @@ public class Job {
     }
 
     public Employer getEmployer() {
-        return employer;
+        return this.employer;
     }
 
     public void setEmployer(Employer employer) {
