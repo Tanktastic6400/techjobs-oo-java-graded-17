@@ -21,15 +21,39 @@ public class Job {
     public Job(){
         this.id = nextId;
         nextId++;
-        this.employer.setValue(emptyField);
-        this.location.setValue(emptyField);
-        this.positionType.setValue(emptyField);
-        this.coreCompetency.setValue(emptyField);
+
     }
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
         this();
-        this.name = name;
+        if(!name.isEmpty()) {
+            this.name = name;
+        }else {
+            this.name = emptyField;
+        }
+        if(!employer.getValue().isEmpty()) {
+            this.employer = employer;
+        }else {
+            this.employer.setValue(emptyField);
+        }
+        if(!location.getValue().isEmpty()) {
+            this.location = location;
+        }else {
+            this.location.setValue(emptyField);
+        }
+        if(!positionType.getValue().isEmpty()) {
+            this.positionType = positionType;
+        }else {
+            this.positionType.setValue(emptyField);
+        }
+        if(!coreCompetency.getValue().isEmpty()) {
+            this.coreCompetency= coreCompetency;
+        }else {
+            this.coreCompetency.setValue(emptyField);
+        }
+
+
+
         this.employer = employer;
         this.location = location;
         this.positionType = positionType;
@@ -57,7 +81,7 @@ public class Job {
 
         if(tmpName.isEmpty()){
             tmpName = emptyField;
-            this.setName("Data not available");
+
         }
 
         if(tmpEmployer.isEmpty()){

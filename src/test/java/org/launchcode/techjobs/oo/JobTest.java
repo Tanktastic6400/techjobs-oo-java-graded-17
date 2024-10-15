@@ -61,6 +61,14 @@ public class JobTest {
         Assert.assertTrue(emptyTestJobOutput.endsWith(expectedSeperator));
     }
 
+    @Test
+    public void testToStringHandlesEmptyField(){
+        Job testJob = new Job("Product tester", new Employer(""), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String jobOutput = testJob.toString();
+        Assert.assertTrue(jobOutput.contains("Data not available"));
+    }
+
     //TODO: test toString for the labels and data, checking for empty fields
     @Test
     public void testToStringContainsCorrectLabelsAndData(){
