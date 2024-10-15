@@ -52,12 +52,6 @@ public class Job {
             this.coreCompetency.setValue(emptyField);
         }
 
-
-
-        this.employer = employer;
-        this.location = location;
-        this.positionType = positionType;
-        this.coreCompetency = coreCompetency;
     }
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
@@ -66,37 +60,39 @@ public class Job {
     @Override
     public String toString() {
 
-
-        String tmpName = this.getName();
-        String tmpEmployer = this.getEmployer().toString();
-        String tmpLocation = this.getLocation().toString();
-        String tmpPositionType = this.getPositionType().toString();
-        String tmpCoreCompetency = this.getCoreCompetency().toString();
-
         if(this.id > 0 && this.name.isEmpty() && this.employer.toString().isEmpty() && this.positionType.toString().isEmpty()
             && this.coreCompetency.toString().isEmpty() && this.location.toString().isEmpty()) {
 
             return System.lineSeparator() + "OOPS! This job does not seem to exist." + System.lineSeparator();
         }
 
+        String tmpName = this.getName();
+//        String tmpEmployer = (this.getEmployer() != null) ? this.getEmployer().toString() : "";
+
+        String tmpEmployer = this.getEmployer().toString();
+        String tmpLocation = this.getLocation().toString();
+        String tmpPositionType = this.getPositionType().toString();
+        String tmpCoreCompetency = this.getCoreCompetency().toString();
+
+
         if(tmpName.isEmpty()){
             tmpName = emptyField;
 
         }
 
-        if(tmpEmployer.isEmpty()){
+        if(tmpEmployer == null || tmpEmployer.isEmpty()){
             tmpEmployer = emptyField;
         }
 
-        if(tmpLocation.isEmpty()){
+        if(tmpLocation == null || tmpLocation.isEmpty()){
             tmpLocation = emptyField;
         }
 
-        if(tmpPositionType.isEmpty()){
+        if(tmpPositionType == null || tmpPositionType.isEmpty()){
             tmpPositionType = emptyField;
         }
 
-        if(tmpCoreCompetency.isEmpty()){
+        if(tmpCoreCompetency == null || tmpCoreCompetency.isEmpty()){
             tmpCoreCompetency = emptyField;
         }
 
